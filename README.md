@@ -1,3 +1,3 @@
-= Antora UI
+# Antora UI
 
 Custom UI for `Antora`.
