@@ -78,21 +78,19 @@ const bundlePackTask = createTask({
   ),
 })
 
-const bundleCopyTask = createTask({
-  name: 'bundle:copy',
-  desc: 'Copy ui-bundle.zip to other directory.',
-  call: task.copyZip(
-    './build/ui-bundle.zip',
-    process.argv
-      ?.find(a => a.startsWith('--copy='))
-      ?.replace('--copy=', '')
-  ),
-})
-
 const bundleTask = createTask({
   name: 'bundle',
   desc: 'Clean, lint, build, and bundle the UI for publishing',
-  call: series(bundleBuildTask, bundlePackTask, bundleCopyTask),
+  call: series(bundleBuildTask, bundlePackTask),
+})
+
+const copyBundleTask = createTask({
+  name: 'bundle:copy',
+  desc: 'Copy ui-bundle.zip to other directory.',
+  call: series(bundleTask, task.copyZip(
+    './build/ui-bundle.zip',
+    '../antora-ui/build/ui-bundle.zip'
+  )),
 })
 
 const packTask = createTask({
@@ -126,6 +124,7 @@ const previewTask = createTask({
 module.exports = exportTasks(
   bundleTask,
   cleanTask,
+  copyBundleTask,
   lintTask,
   formatTask,
   buildTask,
