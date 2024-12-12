@@ -5,7 +5,7 @@
   "license": "MPL-2.0",
   "scripts": {
     "build": "npx gulp bundle",
-    "build:copy": "npx gulp bundle --copy=../antora-docs/ui-bundle.zip",
+    "build:copy": "npx gulp bundle -- --copy=../antora-docs/ui-bundle.zip",
     "preview": "npx gulp preview"
   },
   "engines": {
