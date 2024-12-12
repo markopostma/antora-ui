@@ -89,7 +89,7 @@ const copyBundleTask = createTask({
   desc: 'Copy ui-bundle.zip to other directory.',
   call: series(bundleTask, task.copyZip(
     './build/ui-bundle.zip',
-    '../antora-ui/build/ui-bundle.zip'
+    '../antora-docs/ui-bundle.zip'
   )),
 })
 
