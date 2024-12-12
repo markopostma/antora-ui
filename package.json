@@ -3,9 +3,8 @@
   "description": "An archetype project that produces a UI for creating documentation sites with Antora",
   "homepage": "https://gitlab.com/antora/antora-ui-default",
   "license": "MPL-2.0",
-  "repository": {
-    "type": "git",
-    "url": "https://gitlab.com/antora/antora-ui-default.git"
+  "scripts": {
+    "build": "npx gulp bundle"
   },
   "engines": {
     "node": ">= 8.0.0"
@@ -39,7 +38,7 @@
     "gulp-stylelint": "~13.0",
     "gulp-uglify": "~3.0",
     "handlebars": "~4.7",
-    "highlight.js": "9.18.3",
+    "highlight.js": "^9.18.3",
     "js-yaml": "~3.13",
     "merge-stream": "~2.0",
     "postcss-calc": "~7.0",
