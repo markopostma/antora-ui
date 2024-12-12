@@ -14,11 +14,12 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: "18"
-    - name: Build
+    - name: Install & Build
       run: |
         npm install
         npm run build
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
+        name: ui-bundle.zip
         path: build/ui-bundle.zip
