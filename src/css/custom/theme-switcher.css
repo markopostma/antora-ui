@@ -1,0 +1,76 @@
+.theme-switcher {
+  display: inline-block;
+  height: 10px;
+  width: 36px;
+  background: #d7e7e7;
+  align-self: center;
+  position: relative;
+  border-radius: 5px;
+  font-size: 13px;
+  margin-right: 1rem;
+  margin-left: 5px;
+  cursor: pointer;
+}
+.theme-switcher input {
+  opacity: 0;
+}
+.theme-switcher .moon {
+  display: none;
+}
+.theme-switcher span.text {
+  display: block;
+  overflow: hidden;
+  text-indent: -6000em;
+  background-color: transparent;
+}
+.theme-switcher span.icon {
+  position: absolute;
+  top: -7px;
+  left: -1px;
+  display: block;
+  background: black;
+  color: white;
+  width: 24px;
+  height: 24px;
+  border-radius: 12px;
+  transition: left 0.5s;
+}
+.theme-switcher span.icon svg {
+  overflow: visible;
+  box-sizing: content-box;
+  height: 1em;
+}
+.theme-switcher span.icon .moon {
+  margin-left: 7px;
+  margin-top: 5px;
+}
+.theme-switcher span.icon .sun {
+  margin-left: 5px;
+  margin-top: 5px;
+}
+
+.theme-switcher.active {
+  background: #41464b;
+}
+
+.theme-switcher.active span.icon {
+  background: white;
+  color: black;
+  left: 14px;
+}
+
+.theme-switcher.active span.icon .sun {
+  display: none;
+}
+
+.theme-switcher.active span.icon .moon {
+  display: block;
+}
+
+@media screen and (max-width: 1024px) {
+  .theme-switcher {
+    position: absolute;
+    right: 0;
+    top: 90px;
+  }
+}

@@ -4,6 +4,10 @@
   box-sizing: inherit;
 }
 
+:root {
+  color-scheme: light;
+}
+
 html {
   box-sizing: border-box;
   font-size: var(--body-font-size);

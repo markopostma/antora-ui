@@ -1,8 +1,7 @@
 {
-  "name": "@antora/ui-default",
-  "description": "An archetype project that produces a UI for creating documentation sites with Antora",
-  "homepage": "https://gitlab.com/antora/antora-ui-default",
-  "license": "MPL-2.0",
+  "name": "antora-ui",
+  "homepage": "https://github.com/markopostma/antora-ui",
+  "version": "0.0.1",
   "scripts": {
     "build": "npx gulp bundle",
     "build:copy": "npx gulp bundle:copy",
