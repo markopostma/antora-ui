@@ -1,4 +1,4 @@
-= Hardware and Software Requirements
+= Example
 Author Name
 :idprefix:
 :idseparator: -
@@ -6,6 +6,38 @@ Author Name
 :!table-caption:
 //:page-role: -toc
 :page-pagination:
+
+[tabs]
+====
+Typescript::
++
+[,typescript]
+----
+export class Example {
+    constructor(readonly name: string;) {
+        // do something
+    }
+}
+----
+Javascript::
++
+[,javascript]
+----
+export class Example {
+    constructor(name) {
+        this.name = name;
+    }
+}
+----
+Graphql::
++
+[,graphql]
+----
+type Example {
+    name: String
+}
+----
+====
 
 [.float-group]
 --

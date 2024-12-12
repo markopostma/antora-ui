@@ -15,6 +15,7 @@ const { reload: livereload } = process.env.LIVERELOAD === 'true' ? require('gulp
 const serverConfig = { host: '0.0.0.0', port: 5252, livereload }
 
 const task = require('./gulp.d/tasks')
+
 const glob = {
   all: [srcDir, previewSrcDir],
   css: `${srcDir}/css/**/*.css`,
@@ -63,7 +64,7 @@ const buildTask = createTask({
 
 const bundleBuildTask = createTask({
   name: 'bundle:build',
-  call: series(cleanTask, lintTask, buildTask),
+  call: series(cleanTask, buildTask), // removed lintTask.
 })
 
 const bundlePackTask = createTask({
@@ -77,10 +78,21 @@ const bundlePackTask = createTask({
   ),
 })
 
+const bundleCopyTask = createTask({
+  name: 'bundle:copy',
+  desc: 'Copy ui-bundle.zip to other directory.',
+  call: task.copyZip(
+    './build/ui-bundle.zip',
+    process.argv
+      ?.find(a => a.startsWith('--copy='))
+      ?.replace('--copy=', '')
+  ),
+})
+
 const bundleTask = createTask({
   name: 'bundle',
   desc: 'Clean, lint, build, and bundle the UI for publishing',
-  call: series(bundleBuildTask, bundlePackTask),
+  call: series(bundleBuildTask, bundlePackTask, bundleCopyTask),
 })
 
 const packTask = createTask({

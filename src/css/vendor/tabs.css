@@ -1,1 +1,18 @@
 @import "@asciidoctor/tabs";
+
+.tabpanel {
+  margin-top: -1px;
+}
+
+.tabpanel:has(.content > pre.highlight:first-child) {
+  padding: 0;
+}
+
+.tabpanel .content > pre.highlight:first-child {
+  border: none;
+}
+
+.tabpanel .content > pre.highlight:first-child > code {
+  padding: 1rem;
+  background: none;
+}
