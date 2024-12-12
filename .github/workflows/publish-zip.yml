@@ -18,13 +18,9 @@ jobs:
       run: |
         npm install
         npm run build
-    # - name: Upload artifact
-    #   uses: actions/upload-artifact@v4
-    #   with:
-    #     name: ui-bundle.zip
-    #     path: build/ui-bundle.zip
     - name: Release
       uses: softprops/action-gh-release@v2
       with:
         files: build/ui-bundle.zip
         tag_name: latest
+        token: ${{ secrets.SECRET_tOKEN }}
