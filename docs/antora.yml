@@ -1,5 +1,5 @@
 name: antora-ui
 title: Antora UI
 version: "0.0.1"
-nav:
-  - modules/ROOT/nav.adoc
+# nav:
+#   - modules/ROOT/nav.adoc

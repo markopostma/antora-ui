@@ -100,12 +100,6 @@ const copyBundleTask = createTask({
   ),
 });
 
-const packTask = createTask({
-  name: "pack",
-  desc: "(deprecated; use bundle instead)",
-  call: series(bundleTask),
-});
-
 const buildPreviewPagesTask = createTask({
   name: "preview:build-pages",
   call: task.buildPreviewPages(
@@ -146,5 +140,4 @@ module.exports = exportTasks(
   bundlePackTask,
   previewTask,
   previewBuildTask,
-  packTask,
 );

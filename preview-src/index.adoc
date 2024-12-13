@@ -7,38 +7,6 @@ Author Name
 //:page-role: -toc
 :page-pagination:
 
-[tabs]
-====
-Typescript::
-+
-[,typescript]
-----
-export class Example {
-    constructor(readonly name: string;) {
-        // do something
-    }
-}
-----
-Javascript::
-+
-[,javascript]
-----
-export class Example {
-    constructor(name) {
-        this.name = name;
-    }
-}
-----
-Graphql::
-+
-[,graphql]
-----
-type Example {
-    name: String
-}
-----
-====
-
 [.float-group]
 --
 image:multirepo-ssg.svg[Multirepo SSG,180,135,float=right,role=float-gap]

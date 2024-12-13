@@ -23,4 +23,4 @@ jobs:
       with:
         files: build/ui-bundle.zip
         tag_name: latest
-        token: ${{ secrets.SECRET_tOKEN }}
+        make_latest: true
