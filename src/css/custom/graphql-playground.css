@@ -1,0 +1,8 @@
+graphql-playground {
+  display: flex;
+}
+
+graphql-playground > div {
+  flex: 1;
+  flex-shrink: 0;
+}

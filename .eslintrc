@@ -2,6 +2,7 @@
   "extends": "standard",
   "rules": {
     "arrow-parens": ["error", "always"],
+    "quotes": ["single"],
     "comma-dangle": [
       "error",
       {

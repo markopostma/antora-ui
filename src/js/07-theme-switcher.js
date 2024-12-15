@@ -1,27 +1,54 @@
 (function() {
   "use strict";
 
-  activateSwitch(document.getElementById("switch-theme-checkbox"));
+  let theme = "light";
+
+  if ("matchMedia" in window) {
+    theme = window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
+
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener(
+      "change",
+      ({ matches }) => {
+        console.log("(prefers-color-scheme: dark)", ev);
+        theme = matches ? "dark" : "light";
+        activateSwitch(el, matches);
+      },
+      { passive: true }
+    );
+
+    activateSwitch(
+      document.getElementById("switch-theme-checkbox"),
+      theme === "dark"
+    );
+  }
+
+  window.onload = function onload() {
+    const el = document.getElementById("switch-theme-checkbox");
+
+    if ("localStorage" in window && window.localStorage.getItem("theme")) {
+      const checked = window.localStorage.getItem("theme") === "dark";
+
+      activateSwitch(el, checked);
+    } else {
+      activateSwitch(el, theme === "dark");
+    }
+  };
 
   /**
    * Activate checkbox.
    * @param {HTMLInputElement} control
+   * @param {boolean} checked
    * @returns {void}
    */
-  function activateSwitch(control) {
+  function activateSwitch(control, checked) {
     if (!control) return;
 
-    if (window.localStorage && window.localStorage.getItem("theme")) {
-      control.checked = window.localStorage.getItem("theme") === "dark";
+    control.checked = checked || false;
+    onThemeChange(control);
 
-      onThemeChange.call(control);
-    } else {
-      control.checked = document.documentElement.classList.contains(
-        "dark-theme"
-      );
-    }
-
-    control.addEventListener("change", onThemeChange.bind(control), {
+    control.addEventListener("change", () => onThemeChange(control), {
       passive: true
     });
   }
@@ -31,22 +58,28 @@
    * @param {'dark' | 'light'} theme
    */
   function saveTheme(theme) {
-    window.localStorage && window.localStorage.setItem("theme", theme);
+    if ("localStorage" in window) {
+      window.localStorage.setItem("theme", theme);
+    }
   }
 
-  function onThemeChange() {
-    document.documentElement.classList.toggle("dark-theme", this.checked);
+  /**
+   * Handles a theme switch.
+   * @param {HTMLElement} control
+   */
+  function onThemeChange(control) {
+    document.documentElement.classList.toggle("dark-theme", control.checked);
     document.documentElement.setAttribute(
       "data-theme",
-      this.checked ? "dark" : "light"
+      control.checked ? "dark" : "light"
     );
 
-    saveTheme(this.checked ? "dark" : "light");
+    saveTheme(control.checked ? "dark" : "light");
 
-    if (this.checked) {
-      this.parentElement.classList.add("active");
+    if (control.checked) {
+      control.parentElement.classList.add("active");
     } else {
-      this.parentElement.classList.remove("active");
+      control.parentElement.classList.remove("active");
     }
   }
 })();
