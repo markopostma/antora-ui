@@ -41,7 +41,7 @@
     "gulp-stylelint": "~13.0",
     "gulp-uglify": "~3.0",
     "handlebars": "~4.7",
-    "highlight.js": "^11.10.0",
+    "highlight.js": "^11.0.0",
     "js-yaml": "~3.13",
     "merge-stream": "~2.0",
     "postcss-calc": "~7.0",

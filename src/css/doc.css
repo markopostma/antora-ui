@@ -41,10 +41,6 @@
     font-size: calc(36 / var(--rem-base) * 1.5rem);
     margin-top: 2.5rem;
   }
-
-  #preamble {
-    font-size: 1.05rem;
-  }
 }
 
 .doc > h1.page:first-child + aside.toc.embedded {
